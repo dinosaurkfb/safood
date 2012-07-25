@@ -1,5 +1,4 @@
 from .base import BaseThing
-from .followship import FollowShip
 from .additive import Additive
 from .profile import Profile
 from .user import User

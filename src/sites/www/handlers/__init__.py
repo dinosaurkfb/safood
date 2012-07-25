@@ -4,8 +4,6 @@ from handlers.auth import *
 from handlers.user import *
 from handlers.additive import *
 from handlers.food import *
-from handlers.comment import *
-from handlers.blog import *
 
 from handlers.additive_api import *
 from handlers.food_api import *
