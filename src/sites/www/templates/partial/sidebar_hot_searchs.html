@@ -1,0 +1,25 @@
+{% import models %}
+{% set hot_searchs = models.Additive_Search().hot_searchs %}
+
+<div class="box" id="panel-searchs">
+    <div class="header">热门搜索</div>
+    <div class="body">
+        <ul>
+            {% for search in hot_searchs %}
+<!--
+            <a class="avatar" href="/additive/{{search[1]}}">
+-->
+            <a class="avatar" href="/additive/{{search[1]}}">
+	      <li> 
+		{{search[0]}}
+	      </li>
+<!--
+	      <li class="item"> 
+		<span class="anchor">{{search[0]}}</span>
+	      </li>
+-->
+	    </a>
+            {% end %}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+{% extends '../base.html' %}
+
+{% block main %}
+{% set creator = additive.creator %}
+<div id="additive">
+  {# 如果不是单张照片，则显示左右箭头 #}
+</div>
+<div id="additive-extra">
+  <div class="bar noneselectable">
+    <i class="icon-slideup"></i>
+    <h4>添加剂详情:{{additive.name}}</h4>
+  </div>
+
+<table border="1">
+  <tr>
+    <th>属性</th>
+    <th>属性值</th>
+  </tr>
+  <tr>
+    <td>其他名称</td>
+    <td>{{additive.alias if additive.alias else u"未知" }}</td>
+  </tr>
+
+  <tr>
+    <td>CNS号</td>
+    <td>{{additive.cns if additive.cns else u"未知" }}</td>
+  </tr>
+
+  <tr>
+    <td>INS号</td>
+    <td>{{additive.ins if additive.ins else u"未知" }}</td>
+  </tr>
+
+  <tr>
+    <td>功能</td>
+    <td>{{additive.effect if additive.effect else u"未知" }}</td>
+  </tr>
+
+  <tr>
+    <td>ADI</td>
+    <td>{{additive_detail.adi if additive_detail.adi else u"未知" }}</td>
+  </tr>
+  <tr>
+    <td>LD50</td>
+    <td>{{additive_detail.ld50 if additive_detail.ld50 else u"未知"}}</td>
+  </tr>
+  <tr>
+    <td>应用范围</td>
+    <td>{{additive_detail.apply_range if additive_detail.apply_range else u"未知" }}</td>
+  </tr>
+  <tr>
+    <td>安全情况</td>
+    <td>{{additive_detail.safe_status if additive_detail.safe_status else u"未知" }}</td>
+  </tr>
+  <tr>
+    <td>制法</td>
+    <td>{{additive_detail.preparation if additive_detail.preparation else u"未知" }}</td>
+  </tr>
+  <tr>
+    <td>简洁制法</td>
+    <td>{{additive_detail.preparation_short if additive_detail.preparation_short else u"未知" }}</td>
+  </tr>
+
+</table>
+
+<!--
+  <ul class="detail">
+    <li>ADI: {{additive_detail.adi if additive_detail.adi else u"未知" }}</li>
+    <li>LD50: {{additive_detail.ld50 if additive_detail.ld50 else u"未知"}}</li>
+    <li>应用范围: {{additive_detail.apply_range if additive_detail.apply_range else u"未知" }}</li>
+    <li>安全情况: {{additive_detail.safe_status if additive_detail.safe_status else u"未知" }}</li>
+    <li>制法: {{additive_detail.preparation if additive_detail.preparation else u"未知" }}</li>
+    <li>简洁制法: {{additive_detail.preparation_short if additive_detail.preparation_short else u"未知" }}</li>
+  </ul>
+-->  
+</div>
+{% end %}

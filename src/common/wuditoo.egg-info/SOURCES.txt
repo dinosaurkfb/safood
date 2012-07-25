@@ -1,0 +1,6 @@
+setup.py
+common/wuditoo.egg-info/PKG-INFO
+common/wuditoo.egg-info/SOURCES.txt
+common/wuditoo.egg-info/dependency_links.txt
+common/wuditoo.egg-info/not-zip-safe
+common/wuditoo.egg-info/top_level.txt

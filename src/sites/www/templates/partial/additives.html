@@ -1,0 +1,35 @@
+<div class="box" id="additives">
+  <div class="header">{{additives_title}}</div>
+  <div class="body main ul">
+    {% for index, additive in enumerate(additives) %}
+    {% set creator = additive.creator %}
+    <div class="additive-item">
+      <div class="header">
+	<a class="avatar" href="/additive/{{additive.id}}"><img src="{{get_avatar_url(creator, 's')}}" /> {{additive.name}}</a> 
+      </div>
+      <div class="body">
+        <div class="additive_alias">其他名称:{{additive.alias}}</div>
+        <div class="additive_cns">CNS号:{{additive.cns}}</div>
+        <div class="additive_ins">INS号:{{additive.ins}}</div>
+        <div class="additive_effect">功能:{{additive.effect}}</div>
+      </div>
+      <div class="footer">
+
+	<span class="meta">
+	    <li><i class="icon-view"></i> {{additive.views_count}} | Created:{{timesince(additive.created)}}</li>
+	</span>
+	<span class="created">
+          
+	</span>
+      </div>
+    </div>
+    {# fuck ie #}
+    {% if index > 0 and (index + 1) % 3 == 0 %}
+    <div class="clearfix"></div>
+    {% end %}
+
+    {% end %}
+    {% set page_type = 'additives' %}
+    {% include 'pagination.html' %}
+  </div>
+</div>

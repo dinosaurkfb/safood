@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% include partial/additives.html %}
+{% end %}
+
+{% block sidebar %}
+{% include 'partial/sidebar_user.html' %}
+{% end %}
+
+{% block metadata %}
+{% if current_additive %}
+<script type="text/javascript">
+meta_additive = {
+    url: "/additive/{{current_additive.id}}",
+    width: {{current_additive.width}},
+    height: {{current_additive.height}}
+}
+{% end %}
+</script>
+{% end %}

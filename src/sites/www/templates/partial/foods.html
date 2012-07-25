@@ -1,0 +1,26 @@
+<div class="box" id="foods">
+  <div class="header">{{foods_title}}</div>
+  <div class="body main ul">
+    {% for index, food in enumerate(foods) %}
+    {% set creator = food.creator %}
+    <div class="food-item">
+      <div class="header">
+	<a class="avatar" href="/food/{{food.id}}"><img src="{{get_food_avatar_url(creator, 's')}}" /> {{food.name}}</a> 
+      </div>
+      <div class="footer">
+
+	<span class="meta">
+	  <li><i class="icon-view"></i> {{food.views_count}} | Created:{{timesince(food.created)}}</li>
+	</span>
+      </div>
+    </div>
+    {# fuck ie #}
+    {% if index > 0 and (index + 1) % 3 == 0 %}
+    <div class="clearfix"></div>
+    {% end %}
+
+    {% end %}
+    {% set page_type = 'foods' %}
+    {% include 'pagination.html' %}
+  </div>
+</div>

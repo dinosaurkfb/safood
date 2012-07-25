@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block main %}
+{% include 'partial/foods.html' %}
+{% end %}
+
+{% block sidebar %}
+{% include 'partial/foods_sidebar_global.html' %}
+{% end %}
+
+{% block metadata %}
+<script type="text/javascript">
+{% if current_food %}
+meta_food = {
+    url: "/food/{{current_food.id}}",
+}
+{% end %}
+</script>
+{% end %}

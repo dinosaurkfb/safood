@@ -1,0 +1,176 @@
+2012-05-26 10:29:33,574 CRIT Supervisor running as root (no user in config file)
+2012-05-26 10:31:00,562 CRIT Supervisor running as root (no user in config file)
+2012-05-26 10:34:48,076 CRIT Supervisor running as root (no user in config file)
+2012-05-26 10:51:43,995 INFO RPC interface 'supervisor' initialized
+2012-05-26 10:51:44,010 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-05-26 10:51:44,011 INFO daemonizing the supervisord process
+2012-05-26 10:51:44,013 INFO supervisord started with pid 1869
+2012-05-26 10:51:45,018 INFO spawned: 'www' with pid 1870
+2012-05-26 10:51:45,022 INFO spawned: 'redis' with pid 1871
+2012-05-26 10:51:46,025 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-05-26 10:51:46,025 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-05-26 10:51:46,389 INFO exited: www (exit status 1; not expected)
+2012-05-26 10:51:47,394 INFO spawned: 'www' with pid 1882
+2012-05-26 10:51:47,713 INFO exited: www (exit status 1; not expected)
+2012-05-26 10:51:48,717 INFO spawned: 'www' with pid 1891
+2012-05-26 10:51:49,041 INFO exited: www (exit status 1; not expected)
+2012-05-26 10:51:51,050 INFO spawned: 'www' with pid 1900
+2012-05-26 10:51:51,352 INFO exited: www (exit status 1; not expected)
+2012-05-26 10:51:54,406 INFO spawned: 'www' with pid 1912
+2012-05-26 10:51:54,720 INFO exited: www (exit status 1; not expected)
+2012-05-26 10:51:55,722 INFO gave up: www entered FATAL state, too many start retries too quickly
+2012-05-26 10:55:35,926 CRIT Supervisor running as root (no user in config file)
+2012-05-26 21:43:54,400 WARN received SIGTERM indicating exit request
+2012-05-26 21:43:54,400 INFO waiting for redis to die
+2012-05-26 21:43:54,405 INFO stopped: redis (terminated by SIGTERM)
+2012-07-12 10:14:15,589 INFO RPC interface 'supervisor' initialized
+2012-07-12 10:14:15,607 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-12 10:14:15,608 INFO daemonizing the supervisord process
+2012-07-12 10:14:15,610 INFO supervisord started with pid 3103
+2012-07-12 10:14:16,615 INFO spawned: 'www' with pid 3104
+2012-07-12 10:14:16,619 INFO spawned: 'redis' with pid 3105
+2012-07-12 10:14:17,621 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 10:14:17,622 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 10:14:17,721 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:14:18,727 INFO spawned: 'www' with pid 3116
+2012-07-12 10:14:19,053 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:14:20,059 INFO spawned: 'www' with pid 3125
+2012-07-12 10:14:20,384 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:14:22,391 INFO spawned: 'www' with pid 3134
+2012-07-12 10:14:22,765 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:14:25,773 INFO spawned: 'www' with pid 3143
+2012-07-12 10:14:26,135 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:14:27,136 INFO gave up: www entered FATAL state, too many start retries too quickly
+2012-07-12 10:22:40,888 CRIT Supervisor running as root (no user in config file)
+2012-07-12 10:24:53,975 WARN received SIGTERM indicating exit request
+2012-07-12 10:24:53,976 INFO waiting for redis to die
+2012-07-12 10:24:54,105 INFO stopped: redis (exit status 0)
+2012-07-12 10:25:05,712 CRIT Supervisor running as root (no user in config file)
+2012-07-12 10:25:05,780 INFO RPC interface 'supervisor' initialized
+2012-07-12 10:25:05,780 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-12 10:25:05,781 INFO daemonizing the supervisord process
+2012-07-12 10:25:05,783 INFO supervisord started with pid 3307
+2012-07-12 10:25:06,789 INFO spawned: 'www' with pid 3308
+2012-07-12 10:25:06,793 INFO spawned: 'redis' with pid 3309
+2012-07-12 10:25:07,107 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:25:08,113 INFO spawned: 'www' with pid 3321
+2012-07-12 10:25:08,114 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 10:25:08,453 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:25:10,460 INFO spawned: 'www' with pid 3330
+2012-07-12 10:25:10,793 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:25:13,802 INFO spawned: 'www' with pid 3339
+2012-07-12 10:25:14,115 INFO exited: www (exit status 1; not expected)
+2012-07-12 10:25:15,116 INFO gave up: www entered FATAL state, too many start retries too quickly
+2012-07-12 10:37:22,064 WARN received SIGTERM indicating exit request
+2012-07-12 10:37:22,065 INFO waiting for redis to die
+2012-07-12 10:37:22,168 INFO stopped: redis (exit status 0)
+2012-07-12 10:37:28,719 WARN Failed to clean up '/tmp/redis-stderr---supervisor-5res7I.log'
+2012-07-12 10:37:28,719 WARN Failed to clean up '/tmp/www-stderr---supervisor-IhiShA.log'
+2012-07-12 10:37:28,783 INFO RPC interface 'supervisor' initialized
+2012-07-12 10:37:28,783 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-12 10:37:28,784 INFO daemonizing the supervisord process
+2012-07-12 10:37:28,785 INFO supervisord started with pid 3529
+2012-07-12 10:37:29,791 INFO spawned: 'www' with pid 3530
+2012-07-12 10:37:29,794 INFO spawned: 'redis' with pid 3531
+2012-07-12 10:37:30,796 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 10:37:30,796 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 11:31:00,547 WARN received SIGTERM indicating exit request
+2012-07-12 11:31:00,547 INFO waiting for www, redis to die
+2012-07-12 11:31:00,548 INFO stopped: redis (terminated by SIGTERM)
+2012-07-12 11:31:00,557 INFO stopped: www (terminated by SIGTERM)
+2012-07-12 12:16:11,601 CRIT Supervisor running as root (no user in config file)
+2012-07-12 12:16:11,818 INFO RPC interface 'supervisor' initialized
+2012-07-12 12:16:11,818 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-12 12:16:11,820 INFO daemonizing the supervisord process
+2012-07-12 12:16:11,821 INFO supervisord started with pid 1791
+2012-07-12 12:16:12,827 INFO spawned: 'www' with pid 1792
+2012-07-12 12:16:12,832 INFO spawned: 'redis' with pid 1793
+2012-07-12 12:16:13,840 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 12:16:13,840 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 14:18:43,520 INFO stopped: www (terminated by SIGTERM)
+2012-07-12 14:48:17,212 INFO spawned: 'www' with pid 2547
+2012-07-12 14:48:18,215 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-12 16:21:08,115 INFO exited: www (terminated by SIGTERM; not expected)
+2012-07-12 16:21:08,116 WARN received SIGTERM indicating exit request
+2012-07-12 16:21:08,117 INFO waiting for redis to die
+2012-07-12 16:21:08,119 INFO stopped: redis (terminated by SIGTERM)
+2012-07-14 10:45:35,749 CRIT Supervisor running as root (no user in config file)
+2012-07-14 10:45:35,886 INFO RPC interface 'supervisor' initialized
+2012-07-14 10:45:35,886 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-14 10:45:35,888 INFO daemonizing the supervisord process
+2012-07-14 10:45:35,889 INFO supervisord started with pid 2117
+2012-07-14 10:45:36,893 INFO spawned: 'www' with pid 2118
+2012-07-14 10:45:36,897 INFO spawned: 'redis' with pid 2119
+2012-07-14 10:45:37,899 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-14 10:45:37,899 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-14 10:45:50,775 INFO stopped: www (terminated by SIGTERM)
+2012-07-14 17:15:49,909 WARN received SIGTERM indicating exit request
+2012-07-14 17:15:49,910 INFO waiting for redis to die
+2012-07-14 17:15:49,920 INFO stopped: redis (terminated by SIGTERM)
+2012-07-16 06:45:34,592 CRIT Supervisor running as root (no user in config file)
+2012-07-16 06:45:34,799 INFO RPC interface 'supervisor' initialized
+2012-07-16 06:45:34,799 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-16 06:45:34,800 INFO daemonizing the supervisord process
+2012-07-16 06:45:34,802 INFO supervisord started with pid 1900
+2012-07-16 06:45:35,808 INFO spawned: 'www' with pid 1901
+2012-07-16 06:45:35,812 INFO spawned: 'redis' with pid 1902
+2012-07-16 06:45:36,815 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-16 06:45:36,815 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-16 09:33:01,885 WARN received SIGTERM indicating exit request
+2012-07-16 09:33:01,890 INFO waiting for www, redis to die
+2012-07-16 09:33:01,896 INFO stopped: redis (terminated by SIGTERM)
+2012-07-16 09:33:01,900 INFO stopped: www (terminated by SIGTERM)
+2012-07-17 11:00:58,577 CRIT Supervisor running as root (no user in config file)
+2012-07-17 11:00:58,829 INFO RPC interface 'supervisor' initialized
+2012-07-17 11:00:58,829 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-17 11:00:58,830 INFO daemonizing the supervisord process
+2012-07-17 11:00:58,832 INFO supervisord started with pid 2006
+2012-07-17 11:00:59,837 INFO spawned: 'www' with pid 2007
+2012-07-17 11:00:59,840 INFO spawned: 'redis' with pid 2008
+2012-07-17 11:01:00,843 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-17 11:01:00,843 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-17 12:30:12,466 WARN received SIGTERM indicating exit request
+2012-07-17 12:30:12,467 INFO waiting for www, redis to die
+2012-07-17 12:30:12,471 INFO stopped: redis (terminated by SIGTERM)
+2012-07-17 12:30:12,479 INFO stopped: www (terminated by SIGTERM)
+2012-07-19 13:50:57,034 CRIT Supervisor running as root (no user in config file)
+2012-07-19 13:50:57,250 INFO RPC interface 'supervisor' initialized
+2012-07-19 13:50:57,251 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-19 13:50:57,252 INFO daemonizing the supervisord process
+2012-07-19 13:50:57,254 INFO supervisord started with pid 2725
+2012-07-19 13:50:58,269 INFO spawned: 'www' with pid 2726
+2012-07-19 13:50:58,271 INFO spawned: 'redis' with pid 2727
+2012-07-19 13:50:59,273 INFO success: www entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-19 13:50:59,274 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-19 13:51:01,024 INFO exited: www (exit status 1; not expected)
+2012-07-19 13:51:02,030 INFO spawned: 'www' with pid 2740
+2012-07-19 13:51:02,783 INFO exited: www (exit status 1; not expected)
+2012-07-19 13:51:03,788 INFO spawned: 'www' with pid 2749
+2012-07-19 13:51:04,776 INFO exited: www (exit status 1; not expected)
+2012-07-19 13:51:06,783 INFO spawned: 'www' with pid 2758
+2012-07-19 13:51:07,548 INFO exited: www (exit status 1; not expected)
+2012-07-19 13:51:10,570 INFO spawned: 'www' with pid 2767
+2012-07-19 13:51:11,367 INFO exited: www (exit status 1; not expected)
+2012-07-19 13:51:12,370 INFO gave up: www entered FATAL state, too many start retries too quickly
+2012-07-19 14:20:00,966 WARN received SIGTERM indicating exit request
+2012-07-19 14:20:00,967 INFO waiting for redis to die
+2012-07-19 14:20:00,972 INFO stopped: redis (terminated by SIGTERM)
+2012-07-19 19:08:55,286 CRIT Supervisor running as root (no user in config file)
+2012-07-19 19:08:55,432 INFO RPC interface 'supervisor' initialized
+2012-07-19 19:08:55,433 CRIT Server 'unix_http_server' running without any HTTP authentication checking
+2012-07-19 19:08:55,434 INFO daemonizing the supervisord process
+2012-07-19 19:08:55,435 INFO supervisord started with pid 3171
+2012-07-19 19:08:56,441 INFO spawned: 'www' with pid 3172
+2012-07-19 19:08:56,445 INFO spawned: 'redis' with pid 3173
+2012-07-19 19:08:57,322 INFO exited: www (exit status 1; not expected)
+2012-07-19 19:08:58,328 INFO spawned: 'www' with pid 3184
+2012-07-19 19:08:58,329 INFO success: redis entered RUNNING state, process has stayed up for > than 1 seconds (startsecs)
+2012-07-19 19:08:59,047 INFO exited: www (exit status 1; not expected)
+2012-07-19 19:09:01,877 INFO spawned: 'www' with pid 3196
+2012-07-19 19:09:02,566 INFO exited: www (exit status 1; not expected)
+2012-07-19 19:09:05,576 INFO spawned: 'www' with pid 3205
+2012-07-19 19:09:06,341 INFO exited: www (exit status 1; not expected)
+2012-07-19 19:09:07,257 INFO gave up: www entered FATAL state, too many start retries too quickly
+2012-07-19 23:22:42,035 WARN received SIGTERM indicating exit request
+2012-07-19 23:22:42,042 INFO waiting for redis to die
+2012-07-19 23:22:42,044 INFO stopped: redis (terminated by SIGTERM)

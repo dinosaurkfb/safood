@@ -1,0 +1,33 @@
+{% extends '../base.html' %}
+{% block main %}
+{% set creator = food.creator %}
+<div id="food">
+  {# 如果不是单张照片，则显示左右箭头 #}
+</div>
+<div id="food-extra">
+  <div class="bar noneselectable">
+    <i class="icon-slideup"></i>
+    <h4>食物详情:{{food.name}}</h4>
+  </div>
+
+<table border="1">
+  <tr>
+    <th>组成部分</th>
+    <th>所含添加剂</th>
+  </tr>
+
+  {% for part in i_dict %}
+  <tr>
+    <td>{{ part }}</td>
+    <td>
+      {% for i in i_dict[part] %}
+      <a href='/additive/{{i[0]}}'>
+	{{ i[1] }}
+      </a>
+      {% end %}
+    </td}>
+  </tr>
+  {% end %}
+</table>
+</div>
+{% end %}
