@@ -2,13 +2,13 @@ from setuptools import setup
 import os
 
 setup(
-    name = 'wuditoo',
+    name = 'safood',
     version = '0.1',
-    url = 'https://bitbucket.org/lzyy/h5qr00cxma/src',
+    url = 'https://github.com/dinosaurkfb/safood.git',
     license = 'BSD',
-    author = 'lzyy',
-    author_email = 'healdream@gmail.com',
-    description = 'built for photographers',
+    author = 'dinosaurkfb',
+    author_email = 'kfbuniversity@gmail.com',
+    description = 'built for people who want safe food',
     zip_safe = False,
     platforms = 'any',
     package_dir = {'': 'common'},

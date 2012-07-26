@@ -3,7 +3,7 @@
     <div class="body">
         {% for invite_key in invite_keys %}
         <div class="column">
-            <input type="TEXT" value="http://wuditoo.com/register?invite_key={{invite_key.hash}}" {% if invite_key.used %} disabled{% end %} />
+            <input type="TEXT" value="http://safood.com/register?invite_key={{invite_key.hash}}" {% if invite_key.used %} disabled{% end %} />
             <span class="status">
                 {% if invite_key.used %}
                 <a href="/user/{{invite_key.consumer.username}}">{{invite_key.consumer.fullname}}</a>
