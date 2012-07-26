@@ -7,6 +7,8 @@ import models
 from macros.macro import  USERS_PER_PAGE, ADDITIVES_PER_PAGE, FOODS_PER_PAGE
 from utils import keep_order
 
+from tornado.escape import utf8
+
 class BaseHandler(tornado.web.RequestHandler):
 
     def send_error_json(self, data):
@@ -39,6 +41,23 @@ class BaseHandler(tornado.web.RequestHandler):
     @property
     def is_ajax_request(self):
         return self.request.headers.get('X-Requested-With') == 'XMLHttpRequest'
+
+class BaseApiHandler(BaseHandler):
+    CALLBACK = 'callback' # define callback argument name
+    
+    def finish(self, chunk=None):
+        """Finishes this response, ending the HTTP request."""
+        assert not self._finished
+        if chunk: self.write(chunk)
+        
+        # get client callback method
+        callback = utf8(self.get_argument(self.CALLBACK))
+        # format output with jsonp
+        self._write_buffer.insert(0, callback + '(')
+        self._write_buffer.append(')')
+        
+        # call base class finish method
+        super(BaseApiHandler, self).finish() # chunk must be None
 
 class BaseAdditivesHandler(BaseHandler):
     def _render(self, kind, additive = None, tag_name = None):
@@ -87,6 +106,7 @@ class BaseAdditivesHandler(BaseHandler):
                 current_additive = additive,
                 )
 
+class BaseAdditivesApiHandler(BaseApiHandler):
     def _write(self, kind, additive = None, tag_name = None):
         template_prefix = 'partial/' if self.is_ajax_request else ''
         offset = (int(self.get_argument('page', 1)) - 1) * ADDITIVES_PER_PAGE
@@ -181,6 +201,7 @@ class BaseFoodsHandler(BaseHandler):
                 current_food = food,
                 )
 
+class BaseFoodsApiHandler(BaseApiHandler):
     def _write(self, kind, food = None):
         template_prefix = 'partial/' if self.is_ajax_request else ''
         offset = (int(self.get_argument('page', 1)) - 1) * FOODS_PER_PAGE

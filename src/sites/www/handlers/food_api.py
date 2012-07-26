@@ -2,13 +2,13 @@
 import logging
 import tornado
 import json
-from handlers.base import BaseHandler, BaseFoodsHandler, BaseUserFoodsHandler
+from handlers.base import BaseApiHandler, BaseFoodsApiHandler
 import models
 from macros.macro import MAX_UPLOAD_SIZE, FOODS_PER_PAGE
 from helpers import nl2br
 from utils import get_food_part, check_food_permission
 
-class FoodApiHandler(BaseHandler):
+class FoodApiHandler(BaseApiHandler):
     def _incr_view_counts(self, food):
         viewed_food_ids = self.get_cookie('viewed_food_ids', '').split(',')
         if str(food.id) not in (viewed_food_ids):
@@ -71,7 +71,7 @@ class FoodApiHandler(BaseHandler):
             self.send_error_json(food.errors)
 
 
-class FoodSearchApiHandler(BaseHandler):
+class FoodSearchApiHandler(BaseApiHandler):
 #    @tornado.web.authenticated
     def post(self, food_id):
         food = models.Food().find(food_id)
@@ -86,48 +86,11 @@ class FoodSearchApiHandler(BaseHandler):
         foods = models.Food().search(u'%{0}%'.format(val))
         return self.write({u'result':foods.to_dict_list()})
 
-class FoodUploadHandler(BaseHandler):
-    def get(self):
-        template_prefix = 'partial/' if self.is_ajax_request else ''
-        return self.render('{0}upload.html'.format(template_prefix))
-
-class HotFoodsApiHandler(BaseFoodsHandler):
+class HotFoodsApiHandler(BaseFoodsApiHandler):
     def get(self):
         return self._write('hot')
 
-class LatestFoodsApiHandler(BaseFoodsHandler):
+class LatestFoodsApiHandler(BaseFoodsApiHandler):
     def get(self):
         return self._write('latest')
 
-class FoodUserHandler(BaseUserFoodsHandler):
-    def get(self, food_id):
-        food = models.Food().find(food_id)
-        if not food or food.status != 0:
-            return self.render('error/food_not_exists.html')
-
-        # used in BaseUserFoodsHandler
-        self.user = models.User().find(food.user_id)
-        return self._render('foods', food = food)
-
-class FoodMineHandler(BaseFoodsHandler):
-    def get(self, food_id):
-        food = models.Food().find(food_id)
-        if not food or food.status != 0:
-            return self.render('error/food_not_exists.html')
-        kind = 'mine_upload' if self.current_user else 'hot'
-        return self._render(kind, food = food)
-
-class FoodHotHandler(BaseFoodsHandler):
-    def get(self, food_id):
-        food = models.Food().find(food_id)
-        if not food or food.status != 0:
-            return self.render('error/food_not_exists.html')
-
-        return self._render('hot', food = food)
-
-class FoodDeleteHandler(BaseHandler):
-    @check_food_permission
-    @tornado.web.authenticated
-    def post(self, food_id):
-        self.food.delete()
-        return self.send_success_json(location = '/')

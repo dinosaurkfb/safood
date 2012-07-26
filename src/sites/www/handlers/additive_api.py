@@ -2,13 +2,13 @@
 import logging
 import tornado
 import json
-from handlers.base import BaseHandler, BaseAdditivesHandler, BaseUserAdditivesHandler
+from handlers.base import BaseApiHandler, BaseAdditivesApiHandler
 import models
 from macros.macro import MAX_UPLOAD_SIZE, ADDITIVES_PER_PAGE
 from helpers import nl2br
 from utils import get_additive_detail, check_additive_permission
 
-class AdditiveApiHandler(BaseHandler):
+class AdditiveApiHandler(BaseApiHandler):
     def _incr_view_counts(self, additive):
         viewed_additive_ids = self.get_cookie('viewed_additive_ids', '').split(',')
         if str(additive.id) not in (viewed_additive_ids):
@@ -39,7 +39,7 @@ class AdditiveApiHandler(BaseHandler):
         return self.write(result)
 
 
-class AdditiveSearchApiHandler(BaseHandler):
+class AdditiveSearchApiHandler(BaseApiHandler):
 #    @tornado.web.authenticated
     def post(self, additive_id):
         additive = models.Additive().find(additive_id)
@@ -54,11 +54,11 @@ class AdditiveSearchApiHandler(BaseHandler):
         additives = models.Additive().search(u'%{0}%'.format(val))
         return self.write({u'result': additives.to_dict_list()})
 
-class HotAdditivesApiHandler(BaseAdditivesHandler):
+class HotAdditivesApiHandler(BaseAdditivesApiHandler):
     def get(self):
         return self._write('hot')
 
-class LatestAdditivesApiHandler(BaseAdditivesHandler):
+class LatestAdditivesApiHandler(BaseAdditivesApiHandler):
     def get(self):
         return self._write('latest')
 

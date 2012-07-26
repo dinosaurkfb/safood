@@ -16,3 +16,14 @@ class HomeHandler(BaseAdditivesHandler):
 class AboutHandler(BaseHandler):
     def get(self):
         return self.render('about.html')
+
+# class LocalHandler(BaseHandler):
+#     def get(self):
+#         return self.render('jsonp.html')
+
+# class JsonpHandler(BaseHandler):
+#     def get(self):
+#         code = self.get_argument('code')
+#         callback = self.get_argument('callback')
+#         js = u'{0}({{"code":"{1}", "price":1780, "tickets":5}});'.format(callback, code)
+#         return self.write(js)
