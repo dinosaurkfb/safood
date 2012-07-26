@@ -9,9 +9,11 @@ def get_db_config():
         'master': {
             'url': options.db_master_url,
             'echo': False,
+            'connect_args' : {'unix_socket': '/tmp/mysql.sock'}
             },
         'slave': {
             'url': options.db_slave_url,
             'echo': False,
+            'connect_args' : {'unix_socket': '/tmp/mysql.sock'}
             },
     }

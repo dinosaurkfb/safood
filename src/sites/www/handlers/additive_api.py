@@ -26,7 +26,6 @@ class AdditiveApiHandler(BaseApiHandler):
         self._incr_view_counts(additive)
         
         result = additive.to_dict()
-        print(u"additive name:{0}".format(result['name']))
         del result['id']
         del result['user_id']
         del result['status']
