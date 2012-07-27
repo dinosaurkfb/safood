@@ -13,8 +13,6 @@ class Additive_Detail(models.base.BaseThing):
 
     def get(self, additive_id):
         self.reset()
-        meta_dict = {}
         meta = self.where('additive_id', '=', additive_id).find()
-        for item in meta:
-            meta_dict[item.key] = item.value
-        return meta_dict
+        meta_dict = meta.to_dict()
+        return meta_dict if meta_dict else {k:None for k in self.columns}
