@@ -22,7 +22,7 @@ class FoodApiHandler(BaseApiHandler):
         food_id = self.get_argument('id', -1)
         food = models.Food().find(food_id)
         if not food or food.status != 0:
-            return self.send_error_json('food_not_exists')
+            return self.write({})
 
         self._incr_view_counts(food)
         

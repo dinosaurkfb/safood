@@ -42,6 +42,9 @@ class BaseHandler(tornado.web.RequestHandler):
     def is_ajax_request(self):
         return self.request.headers.get('X-Requested-With') == 'XMLHttpRequest'
 
+    def get(self, dummy):
+        self.render("404.html")
+
 class BaseApiHandler(BaseHandler):
     CALLBACK = 'callback' # define callback argument name
     

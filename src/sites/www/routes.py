@@ -51,4 +51,5 @@ handlers = [
     (r"/settings/link", SettingsLinkHandler),
     (r"/settings/avatar", SettingsAvatarHandler),
     (r"/settings/password", SettingsPasswordHandler),
+    (r"^/(.*)$", BaseHandler),
 ]

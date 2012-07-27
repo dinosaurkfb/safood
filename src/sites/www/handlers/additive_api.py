@@ -21,7 +21,7 @@ class AdditiveApiHandler(BaseApiHandler):
         additive_id = self.get_argument('id', -1)
         additive = models.Additive().find(additive_id)
         if not additive or additive.status != 0:
-            return self.send_error_json('additive_not_exists')
+            return self.write({})
 
         self._incr_view_counts(additive)
         
@@ -29,12 +29,11 @@ class AdditiveApiHandler(BaseApiHandler):
         del result['id']
         del result['user_id']
         del result['status']
-        details = models.Additive_Detail().find(additive_id)
+        details = models.Additive_Detail().get(additive.id)
         if details:
-            details_dict = details.to_dict()
-            del details_dict['id']
-            del details_dict['additive_id']
-            result.update(details_dict)
+            del details['id']
+            del details['additive_id']
+            result.update(details)
         return self.write(result)
 
 

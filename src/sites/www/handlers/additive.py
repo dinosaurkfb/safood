@@ -24,9 +24,10 @@ class AdditiveHandler(BaseHandler):
 
         self._incr_view_counts(additive)
         
+        additive_detail = models.Additive_Detail().get(additive.id)
         return self.render('partial/additive.html',
                            additive = additive,
-                           additive_detail = models.Additive_Detail().find(additive_id)
+                           additive_detail = additive_detail,
                            )
 
     @tornado.web.authenticated
