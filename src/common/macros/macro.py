@@ -91,7 +91,7 @@ FOOD_STATS = 'addi_stats'
 REDIS_KEY = {
     'FOOD_COUNT': 'h_food_cnt',
     'ADDITIVE_COUNT': 'h_addi_cnt',
-    'USER_LIKED_COUNT': 'h_usr_lkd_cnt', # 被喜欢的次数
+    'USER_ADDITIVE_COUNT': 'h_usr_addi_cnt', # 用户添加的添加剂个数
     'USER_LIKES_COUNT': 'h_usr_lks_cnt', # 喜欢的照片的张数
     'TABLE_ITEMS': 'h_tbl_tms:{table}',
     'USER_MESSAGE': 'l_usr_msg:{user_id}',

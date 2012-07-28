@@ -33,7 +33,7 @@ class RegisterHandler(BaseHandler):
         if not user_id:
             return self.send_error_json(user.errors)
 
-        set_message(self, u'注册成功，有好的摄影作品别忘了来这里分享哦', 'info')
+        set_message(self, u'注册成功，欢迎使用', 'info')
         self.set_secure_cookie('o_O', u'{0}'.format(user_id), domain='.{0}'.format(options.www_domain))
         return self.send_success_json(location = '/')
 
@@ -60,12 +60,14 @@ class LoginHandler(BaseHandler):
         else:
             return self.redirect(u'/login?error={0}'.format(u"该用户不存在"))
 
-        self.set_secure_cookie('o_O', u'{0}'.format(user.id), domain='.{0}'.format(options.www_domain))
-        return_url = self.get_argument('return', '/')
+#        self.set_secure_cookie('o_O', u'{0}'.format(user.id), domain='.{0}'.format(options.www_domain))
+        self.set_secure_cookie('o_O', u'{0}'.format(user.id))
+#        return_url = self.get_argument('return', '/')
+        return_url = self.get_argument('next', '/')
         self.redirect(return_url)
 
 class LogoutHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        self.clear_cookie('o_O', domain='.{0}'.format(options.www_domain))
+        self.clear_cookie('o_O')
         return self.redirect('/')

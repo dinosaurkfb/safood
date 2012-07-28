@@ -44,8 +44,6 @@ class SettingsProfileHandler(BaseHandler):
 
         profile = self.current_user.profile
         profile.camera = self.get_argument('camera', '')
-        profile.lens = self.get_argument('lens', '')
-        profile.bio = self.get_argument('bio', '')
         profile.save()
 
         return self.send_success_json()
@@ -57,7 +55,6 @@ class SettingsLinkHandler(BaseHandler):
         profile.link_weibo = self.get_argument('link_weibo', '')
         profile.link_qq = self.get_argument('link_qq', '')
         profile.link_douban = self.get_argument('link_douban', '')
-        profile.link_flickr = self.get_argument('link_flickr', '')
         profile.link_blog = self.get_argument('link_blog', '')
         profile.save()
 

@@ -7,20 +7,8 @@
             <a href="/user/{{current_user.username}}">{{current_user.fullname}}</a>
 			<i class="level icon-level{{current_user.level}}"></i>
         </div>
-        <div class="follow">
-            <div class="following item" data-title="我关注的人" data-url="/mine/following">
-                <h3 class="anchor">{{current_user.following_count}}</h3>
-                <span>following</span>
-            </div>
-            <div class="follower item" data-title="关注我的人" data-url="/mine/follower">
-                <h3 class="anchor">{{current_user.follower_count}}</h3>
-                <span>followers</span>
-            </div>
-        </div>
         <ul>
-            <li class="item" data-url="/mine/invite" data-title="邀请朋友加入"> <span class="num">{{current_user.unused_invite_key_count}}</span><span class="anchor">邀请朋友加入</span></li>
-            <li class="item" data-title="我添加的照片" data-url="/mine/photos"> <span class="num">{{current_user.photo_count}}</span><span class="anchor">我添加的照片</span></li>
-            <li class="item" data-title="我喜欢的照片" data-url="/mine/likes_photos"><span class="num">{{current_user.likes_count}}</span><span class="anchor">我喜欢的照片</span> </li>
+            <li class="item" data-title="我上传的添加剂" data-url="/mine/additives"> <span class="num">{{current_user.additive_count}}</span><span class="anchor">我上传的添加剂</span></li>
         </ul>
     </div>
 </div>

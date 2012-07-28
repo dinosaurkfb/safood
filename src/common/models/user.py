@@ -116,7 +116,8 @@ class User(models.base.BaseThing):
 
     @property
     def additive_count(self):
-        return get_redis_client().hget(REDIS_KEY['USER_ADDITIVE_COUNT'], self.id) or 0
+#        return get_redis_client().hget(REDIS_KEY['USER_ADDITIVE_COUNT'], self.id) or 0
+        return models.Additive().where('user_id', '=', self.id).count()
 
     @property
     def search_count(self):
@@ -135,12 +136,14 @@ class User(models.base.BaseThing):
 
     @additive_create.connect
     def _additive_create(additive):
-        redis_client = get_redis_client()
-        current_additive_count = redis_client.hget(ADDITIVE_STATS, REDIS_KEY['ADDITIVE_COUNT']) or 0
-        redis_client.hset(ADDITIVE_STATS, REDIS_KEY['USER_ADDITIVE_COUNT'], int(current_additive_count) + 1)
+        print('One additive is created')
+        # redis_client = get_redis_client()
+        # current_additive_count = redis_client.hget(ADDITIVE_STATS, REDIS_KEY['ADDITIVE_COUNT']) or 0
+        # redis_client.hset(ADDITIVE_STATS, REDIS_KEY['USER_ADDITIVE_COUNT'], int(current_additive_count) + 1)
 
     @additive_delete.connect
     def _additive_delete(additive):
-        redis_client = get_redis_client()
-        current_additive_count = redis_client.hget(ADDITIVE_STATS, REDIS_KEY['USER_ADDITIVE_COUNT']) or 0
-        redis_client.hset(ADDITIVE_STATS, REDIS_KEY['USER_ADDITIVE_COUNT'], int(current_additive_count) - 1)
+        print('One additive is created')
+        # redis_client = get_redis_client()
+        # current_additive_count = redis_client.hget(ADDITIVE_STATS, REDIS_KEY['USER_ADDITIVE_COUNT']) or 0
+        # redis_client.hset(ADDITIVE_STATS, REDIS_KEY['USER_ADDITIVE_COUNT'], int(current_additive_count) - 1)

@@ -100,6 +100,17 @@ class BaseAdditivesHandler(BaseHandler):
 
             total_items = models.Additive_Tag().count_by_tag(tag_name)
 
+        # cuser = self.get_current_user()
+        # if cuser:
+        #     print('++++++++++get_current_user, name:{0}'.format(cuser.username))
+        # else:
+        #     print 'get_current user return None'
+            
+
+        # if self.current_user:
+        #     print('++++++++++current_user name:{0}'.format(self.current_user.username))
+        # else:
+        #     print 'No current user'
         return self.render('{0}additives.html'.format(template_prefix),
                 additives_title = additives_title,
                 additives_type = additives_type,

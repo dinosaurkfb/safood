@@ -5,31 +5,31 @@
       <div class="section">
         <label for="additive">添加剂名称 (必填)</label>
         <div class="input-single">
-          <input type="TEXT" name="name" value="{{handler.get_argument('name, '')}}" />
+          <input type="TEXT" name="name" value="{{handler.get_argument('name', '')}}" />
         </div>
       </div>
       <div class="section">
         <label for="additive">其他名称</label>
         <div class="input-single">
-          <input type="TEXT" name="alias" value="{{handler.get_argument('alias, '')}}" />
+          <input type="TEXT" name="alias" value="{{handler.get_argument('alias', '')}}" />
         </div>
       </div>
       <div class="section">
         <label for="additive">功能 (必填)</label>
         <div class="input-single">
-          <input type="TEXT" name="effect" value="{{handler.get_argument('alias, '')}}"/>
+          <input type="TEXT" name="effect" value="{{handler.get_argument('alias', '')}}"/>
         </div>
       </div>
       <div class="section">
         <label for="additive">CNS号 (必填)</label>
         <div class="input-single">
-          <input type="TEXT" name="cns" value="{{handler.get_argument('cns, '')}}" />
+          <input type="TEXT" name="cns" value="{{handler.get_argument('cns', '')}}" />
         </div>
       </div>
       <div class="section">
         <label for="additive">INS号</label>
         <div class="input-single">
-          <input type="TEXT" name="ins" value="{{handler.get_argument('ins, '')}}" />
+          <input type="TEXT" name="ins" value="{{handler.get_argument('ins', '')}}" />
         </div>
       </div>
       <div class="section">
@@ -37,7 +37,7 @@
           ADI值(包括单位)
         </label>
         <div class="input-single">
-          <input type="TEXT" name="detail_adi" value="{{handler.get_argument('adi, '')}}" />
+          <input type="TEXT" name="detail_adi" value="{{handler.get_argument('adi', '')}}" />
         </div>
       </div>
       <div class="section">
@@ -45,19 +45,19 @@
           LD50值(包括单位)
         </label>
         <div class="input-single">
-          <input type="TEXT" name="detail_ld50" value="{{handler.get_argument('ld50, '')}}" />
+          <input type="TEXT" name="detail_ld50" value="{{handler.get_argument('ld50', '')}}" />
         </div>
       </div>
       <div class="section">
         <label for="additive">应用范围</label>
         <div class="input-single">
-          <textarea rows="5" name="detail_apply_range">  value="{{handler.get_argument('apply_range, '')}}"</textarea>
+          <textarea rows="5" name="detail_apply_range"></textarea>
         </div>
       </div>
       <div class="section">
         <label for="additive">安全情况</label>
         <div class="input-single">
-          <textarea rows="5" name="detail_safe_status">  value="{{handler.get_argument('safe_status, '')}}"</textarea>
+          <textarea rows="5" name="detail_safe_status">  </textarea>
         </div>
       </div>
       <div class="section">
@@ -65,13 +65,13 @@
           使用情况
         </label>
         <div class="input-single">
-          <textarea rows="5" name="detail_using_status">  value="{{handler.get_argument('using_status, '')}}"</textarea>
+          <textarea rows="5" name="detail_using_status">  </textarea>
         </div>
       </div>
       <div class="section">
         <label for="additive">潜在危害</label>
         <div class="input-single">
-          <textarea rows="5" name="detail_safe_risk">  value="{{handler.get_argument('safe_risk, '')}}"</textarea>
+          <textarea rows="5" name="detail_safe_risk"> </textarea>
         </div>
       </div>
       <div class="section">
@@ -79,7 +79,7 @@
           安全性排名
         </label>
         <div class="input-single">
-          <input type="TEXT" name="detail_safe_rank" value="{{handler.get_argument('rank', '')}}"/>
+          <input type="TEXT" name="detail_safe_rank"/>
         </div>
       </div>
 

@@ -26,31 +26,10 @@ class Profile(models.base.BaseThing):
             not_empty = False,
             messages = _invalid_link)
 
-    link_douban = validators.URL(
-            strip = True,
-            add_http = True,
-            not_empty = False,
-            messages = _invalid_link)
-
-    link_flickr = validators.URL(
-            strip = True,
-            add_http = True,
-            not_empty = False,
-            messages = _invalid_link)
-
-    link_blog = validators.URL(
-            strip = True,
-            add_http = True,
-            not_empty = False,
-            messages = _invalid_link)
-
     @user_create.connect
     def _user_create(user, **kwargs):
         Profile(
             user_id = user.id,
             link_weibo = '',
             link_qq = '',
-            link_douban = '',
-            link_flickr = '',
-            link_blog = '',
         ).save()
