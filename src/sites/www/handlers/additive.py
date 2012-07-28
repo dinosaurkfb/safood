@@ -39,25 +39,25 @@ class AdditiveHandler(BaseHandler):
                 effect = self.get_argument('effect', ''),
                 cns = self.get_argument('cns', ''),
                 ins = self.get_argument('ins', ''),
-                safe4child = self.get_argument('safe4child', ''),
+                safe4child = int(self.get_argument('safe4child', 0)),
                 )
         additive_id = additive.create()
 
         if additive_id:
             additive.save()
-
-            tags = self.get_argument('tag', '')
-            if tags:
-                for tag in tags.split(' '):
-                    models.Additive_Tag(additive_id = additive_id, tag = tag).save()
-            
             if self.get_argument('detail_adi', ''):
-                for item in ('adi', 'ld50', 'apply_range', 'safe_status', 'using_status', 'safe_risk', 'safe_rank', 'preparation', 'preparation_short'):
-                    value = self.get_argument('detail_{0}'.format(item), '')
-                    models.Additive_Detail(
-                            additive_id = additive_id,
-                            key = item,
-                            value = value).save()
+                models.Additive_Detail(
+                    additive_id = additive_id,
+                    adi = self.get_argument('detail_adi', ''),
+                    ld50 = self.get_argument('detail_ld50', ''),
+                    apply_range = self.get_argument('detail_apply_range', ''),
+                    safe_status = self.get_argument('detail_safe_status', ''),
+                    using_status = self.get_argument('detail_using_status', ''),
+                    safe_risk = self.get_argument('detail_safe_risk', ''),
+                    safe_rank = self.get_argument('detail_safe_rank', ''),
+                    preparation = self.get_argument('detail_preparation', ''),
+                    preparation_short = self.get_argument('detail_preparation_short', ''),
+                    ).save()
             else:
                 detail = get_additive_detail(additive.hash, self.current_user.id)
                 for key, value in detail.items():

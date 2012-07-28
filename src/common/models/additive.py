@@ -27,7 +27,7 @@ class Additive(models.base.BaseThing):
 
     def create(self):
         self.status = 0
-        self.created = self.updated = time.time()
+        self.created = time.time()
         self.karma = calculate_karma(0, self.created)
         self.save()
         if self.saved:
