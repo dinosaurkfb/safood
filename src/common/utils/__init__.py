@@ -39,7 +39,7 @@ def _process(body, base_save_path, size, user_id):
     for size_name, size_val in size.items():
         _save_path = os.path.join(save_path, '{0}.jpg'.format(size_name))
         if size_val[-1:] == '^':
-            convert_cmd = ['convert', origin_path, '-resize', '%s^'%size_val,
+            convert_cmd = ['convert', origin_path, '-resize', '%s'%size_val,
                     '-gravity', 'Center', '-extent', size_val[:-1], _save_path]
         else:
             process = subprocess.Popen("identify " + origin_path + " | awk '{print $3}'", shell=True, stdout = subprocess.PIPE)
