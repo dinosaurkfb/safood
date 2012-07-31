@@ -9,4 +9,5 @@ from .additive_detail import Additive_Detail
 from .food import Food
 from .food_part import Food_Part
 from .ingredient import Ingredient
+from .invite_key import Invite_Key
 

@@ -43,7 +43,9 @@ class SettingsProfileHandler(BaseHandler):
             return self.send_error_json(self.current_user.errors)
 
         profile = self.current_user.profile
-        profile.camera = self.get_argument('camera', '')
+        profile.addis_hate = self.get_argument('addis_hate', '')
+        profile.foods_like = self.get_argument('foods_like', '')
+        profile.bio = self.get_argument('bio', '')
         profile.save()
 
         return self.send_success_json()
@@ -54,8 +56,6 @@ class SettingsLinkHandler(BaseHandler):
         profile = self.current_user.profile
         profile.link_weibo = self.get_argument('link_weibo', '')
         profile.link_qq = self.get_argument('link_qq', '')
-        profile.link_douban = self.get_argument('link_douban', '')
-        profile.link_blog = self.get_argument('link_blog', '')
         profile.save()
 
         if profile.saved:
