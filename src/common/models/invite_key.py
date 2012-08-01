@@ -8,7 +8,7 @@ from utils import gen_invite_key
 user_create = signal(EVENTS['USER_CREATE'])
 
 class Invite_Key(models.base.BaseThing):
-    @user_create.connect
+#    @user_create.connect
     def _user_create(user, **kwargs):
         invite_key = Invite_Key().find_by_hash(kwargs['invite_key_hash'])
         invite_key.dest_user_id = user.id

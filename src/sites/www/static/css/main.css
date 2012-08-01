@@ -786,6 +786,13 @@ body {
   font-size: 12px;
   margin-bottom: 10px;
 }
+
+#sidebar #panel-login #register_btn {
+    float: right;
+    width: 50%;
+    text-align: center;
+}
+
 #sidebar #panel-about .body {
   padding-bottom: 10px;
   padding-top: 10px;

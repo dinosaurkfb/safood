@@ -73,19 +73,10 @@ class User(models.base.BaseThing):
                 self.errors = {'password': u'两次密码输入不一致'}
                 return
 
-            invite_key = models.Invite_Key().find_by_hash(self.invite_key)
-            if not invite_key:
-                self.errors = {'invite_key': u'该邀请码不存在'}
-                return
-            if invite_key.used:
-                self.errors = {'invite_key': u'该邀请码已被使用'}
-                return
-
             del self.password_confirm
-            del self.invite_key
             self.password = hash_password(self.password)
             user_id = self.save()
-            signal(EVENTS['USER_CREATE']).send(self, invite_key_hash = invite_key.hash)
+            signal(EVENTS['USER_CREATE']).send(self)
             return user_id
 
     def change_password(self, origin_password, password, password_confirm):

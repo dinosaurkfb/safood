@@ -8,10 +8,31 @@
 	<a class="avatar" href="/additive/{{additive.id}}"><img src="{{get_avatar_url(creator, 's')}}" /> {{additive.name}}</a> 
       </div>
       <div class="body">
-        <div class="additive_alias">其他名称:{{additive.alias}}</div>
-        <div class="additive_cns">CNS号:{{additive.cns}}</div>
-        <div class="additive_ins">INS号:{{additive.ins}}</div>
-        <div class="additive_effect">功能:{{additive.effect}}</div>
+	<table border="0", id="additive-brief-tab">
+	  <tr>
+	    <td>别名:</td>
+	    <td>{{additive.alias if additive.alias else u"未知" }}</td>
+	  </tr>
+	  <tr>
+	    <td>CNS号:</td>
+	    <td>{{additive.cns if additive.cns else u"未知" }}</td>
+	  </tr>
+
+	  <tr>
+	    <td>INS号:</td>
+	    <td>{{additive.ins if additive.ins else u"未知" }}</td>
+	  </tr>
+
+	  <tr>
+	    <td>功能:</td>
+	    <td>{{additive.effect if additive.effect else u"未知" }}</td>
+	  </tr>
+	</table>
+	  
+        <!-- <div class="additive_alias">其他名称:{{additive.alias}}</div> -->
+        <!-- <div class="additive_cns">CNS号:{{additive.cns}}</div> -->
+        <!-- <div class="additive_ins">INS号:{{additive.ins}}</div> -->
+        <!-- <div class="additive_effect">功能:{{additive.effect}}</div> -->
       </div>
       <div class="footer">
 

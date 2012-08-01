@@ -8,17 +8,20 @@ from utils import set_message, hash_password
 import models
 
 class RegisterHandler(BaseHandler):
-    def get(self):
-        invite_key = self.get_argument('invite_key', '')
-        if not invite_key:
-            return self.render('error/invite_key_missing.html')
-        invite_key_info = models.Invite_Key().find_by_hash(invite_key)
+    # def get(self):
+    #     invite_key = self.get_argument('invite_key', '')
+    #     if not invite_key:
+    #         return self.render('error/invite_key_missing.html')
+    #     invite_key_info = models.Invite_Key().find_by_hash(invite_key)
 
-        if not invite_key_info:
-            return self.render('error/invite_key_invalid.html')
-        if invite_key_info.used:
-            return self.render('error/invite_key_used.html')
-        return self.render('register.html', invite_key = invite_key)
+    #     if not invite_key_info:
+    #         return self.render('error/invite_key_invalid.html')
+    #     if invite_key_info.used:
+    #         return self.render('error/invite_key_used.html')
+    #     return self.render('register.html', invite_key = invite_key)
+
+    def get(self):
+        return self.render('register.html')
 
     def post(self):
         user = models.User(
@@ -26,7 +29,6 @@ class RegisterHandler(BaseHandler):
                 email = self.get_argument('email', ''),
                 password = self.get_argument('password', ''),
                 password_confirm = self.get_argument('password_confirm', ''),
-                invite_key = self.get_argument('invite_key', ''),
                 )
         user_id = user.create()
 
@@ -60,8 +62,7 @@ class LoginHandler(BaseHandler):
         else:
             return self.redirect(u'/login?error={0}'.format(u"该用户不存在"))
 
-#        self.set_secure_cookie('o_O', u'{0}'.format(user.id), domain='.{0}'.format(options.www_domain))
-        self.set_secure_cookie('o_O', u'{0}'.format(user.id))
+        self.set_secure_cookie('o_O', u'{0}'.format(user.id), domain='.{0}'.format(options.www_domain))
 #        return_url = self.get_argument('return', '/')
         return_url = self.get_argument('next', '/')
         self.redirect(return_url)
@@ -69,5 +70,5 @@ class LoginHandler(BaseHandler):
 class LogoutHandler(BaseHandler):
     @tornado.web.authenticated
     def get(self):
-        self.clear_cookie('o_O')
+        self.clear_cookie('o_O', domain='.{0}'.format(options.www_domain))
         return self.redirect('/')

@@ -244,20 +244,6 @@ $.fn.photoNext = function() {
   });
 };
 
-$.fn.photoCommentAdd = function() {
-  return this.on('submit', function(e) {
-    var $this;
-    e.preventDefault();
-    $this = $(this);
-    return $.post($this.attr('action'), $this.serialize(), function(result) {
-      if (result.status === 'ok') {
-        $('#comment-create input[type="text"]').val('');
-        return $('#comment-create').before(result.content.content);
-      }
-    });
-  });
-};
-
 $.fn.photoCommentHover = function() {
   return this.on('mouseover', '.comment', function(e) {
     return $(this).find('a.close').show();
@@ -296,24 +282,6 @@ $.fn.photoContentCancelEdit = function() {
   });
 };
 
-$.fn.photoContentSubmit = function() {
-  return this.on('submit', function(e) {
-    var $submit_btn, $this;
-    e.preventDefault();
-    $this = $(this);
-    $submit_btn = $this.find('input[type="submit"]');
-    return $.post($this.attr('action'), $this.serialize(), function(result) {
-      $submit_btn.removeClass('disabled').val($submit_btn.data('origin_text'));
-      if (result.status === 'ok') {
-        $('#photo-content h3 span').text($this.find('input[name="title"]').val());
-        $('#photo-content .content').html($this.find('textarea[name="content"]').val());
-        $this.parent().hide();
-        return $this.parent().prev().show();
-      }
-    });
-  });
-};
-
 $.fn.photoTagHover = function() {
   return this.on('mouseover', 'li', function(e) {
     return $(this).find('.close').css('visibility', 'visible');
@@ -336,28 +304,6 @@ $.fn.photoTagAddCancel = function() {
     e.preventDefault();
     $(this).parent().parent().hide();
     return $('#addtag').show();
-  });
-};
-
-$.fn.photoTagAddSubmit = function() {
-  return this.on('submit', function(e) {
-    var $submit_btn, $this;
-    e.preventDefault();
-    $this = $(this);
-    $submit_btn = $this.find('input[type="submit"]');
-    return $.post($this.attr('action'), $this.serialize(), function(result) {
-      var tag, _i, _len, _ref, _results;
-      $submit_btn.removeClass('disabled').val($submit_btn.data('origin_text'));
-      if (result.status === 'ok') {
-        _ref = result.content.tags;
-        _results = [];
-        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-          tag = _ref[_i];
-          _results.push($('#tags').append("                        <li><i class='icon-tag'></i> <a href='/tag/" + tag + "'>" + tag + "</a>                        <span class='close invisible'>×</span></li>"));
-        }
-        return _results;
-      }
-    });
   });
 };
 
@@ -400,17 +346,6 @@ $.fn.photoToggleFullsize = function() {
       $.cookie('photofullsize', '');
     }
     return adjustFancybox();
-  });
-};
-
-$.fn.photoDeleteSubmit = function() {
-  return this.on('click', function(e) {
-    var $this;
-    e.preventDefault();
-    $this = $(this);
-    return $.post($this.data('url'), function(result) {
-      if (result.status === 'ok') return window.location = result.content.location;
-    }, 'json');
   });
 };
 
