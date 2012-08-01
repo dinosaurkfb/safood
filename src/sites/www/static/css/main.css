@@ -1160,6 +1160,11 @@ a.fancybox-next {
   padding: 0;
   margin: 2px 0;
 }
+
+#additive-extra .bar h4 a {
+    float: right;
+}
+
 #additive-extra ul.param {
   list-style: none;
   color: #777;

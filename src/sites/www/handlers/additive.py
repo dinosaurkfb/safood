@@ -24,7 +24,7 @@ class AdditiveHandler(BaseHandler):
 
         self._incr_view_counts(additive)
         
-        additive_detail = models.Additive_Detail().get(additive.id)
+        additive_detail = models.Additive_Detail().find_by_additive_id(additive.id)
         return self.render('partial/additive.html',
                            additive = additive,
                            additive_detail = additive_detail,
@@ -45,7 +45,62 @@ class AdditiveHandler(BaseHandler):
 
         if additive_id:
             additive.save()
-            if self.get_argument('detail_adi', ''):
+            models.Additive_Detail(
+                additive_id = additive_id,
+                adi = self.get_argument('detail_adi', ''),
+                ld50 = self.get_argument('detail_ld50', ''),
+                apply_range = self.get_argument('detail_apply_range', ''),
+                safe_status = self.get_argument('detail_safe_status', ''),
+                using_status = self.get_argument('detail_using_status', ''),
+                safe_risk = self.get_argument('detail_safe_risk', ''),
+                safe_rank = self.get_argument('detail_safe_rank', ''),
+                preparation = self.get_argument('detail_preparation', ''),
+                preparation_short = self.get_argument('detail_preparation_short', ''),
+                ).save()
+            self.send_success_json(location='/additive/{0}/via/mine'.format(additive_id))
+        else:
+            self.send_error_json(additive.errors)
+
+
+class AdditiveUpdateHandler(BaseHandler):
+    def get(self, additive_id):
+        self.additive = models.Additive().find(additive_id)
+        if not self.additive or self.additive.status != 0:
+            return self.render('error/additive_not_exists.html')
+
+        self.additive_detail = models.Additive_Detail().find_by_additive_id(self.additive.id)
+        return self.render('additive_update.html',
+                           additive = self.additive,
+                           additive_detail = self.additive_detail,
+                           )
+
+    @check_additive_permission
+    @tornado.web.authenticated
+    def post(self, additive_id):
+        name = self.get_argument('name', '')
+        content = self.get_argument('content', '')
+        if name:
+            self.additive.name = name
+            self.additive.alias = self.get_argument('alias', '')
+            self.additive.effect = self.get_argument('effect', '')
+            self.additive.cns = self.get_argument('cns', '')
+            self.additive.ins = self.get_argument('ins', '')
+#            self.additive.safe4child = int(self.get_argument('safe4child', 0))
+            self.additive.save()
+
+            additive_detail = models.Additive_Detail().find_by_additive_id(self.additive.id)
+            if additive_detail:
+                additive_detail.adi = self.get_argument('detail_adi', '')
+                additive_detail.ld50 = self.get_argument('detail_ld50', '')
+                additive_detail.apply_range = self.get_argument('detail_apply_range', '')
+                additive_detail.safe_status = self.get_argument('detail_safe_status', '')
+                additive_detail.using_status = self.get_argument('detail_using_status', '')
+                additive_detail.safe_risk = self.get_argument('detail_safe_risk', '')
+                additive_detail.safe_rank = self.get_argument('detail_safe_rank', '')
+                additive_detail.preparation = self.get_argument('detail_preparation', '')
+                additive_detail.preparation_short = self.get_argument('detail_preparation_short', '')
+                additive_detail.save()
+            else:
                 models.Additive_Detail(
                     additive_id = additive_id,
                     adi = self.get_argument('detail_adi', ''),
@@ -58,29 +113,7 @@ class AdditiveHandler(BaseHandler):
                     preparation = self.get_argument('detail_preparation', ''),
                     preparation_short = self.get_argument('detail_preparation_short', ''),
                     ).save()
-            else:
-                detail = get_additive_detail(additive.hash, self.current_user.id)
-                for key, value in detail.items():
-                    models.Additive_Detail(
-                            additive_id = additive_id,
-                            key = key,
-                            value = value).save()
-
-            self.send_success_json(location='/additive/{0}/via/mine'.format(additive_id))
-        else:
-            self.send_error_json(additive.errors)
-
-
-class AdditiveUpdateHandler(BaseHandler):
-    @check_additive_permission
-    @tornado.web.authenticated
-    def post(self, additive_id):
-        title = self.get_argument('title', '')
-        content = self.get_argument('content', '')
-        if title:
-            self.additive.title = title
-            self.additive.content = content
-            self.additive.save()
+                
             return self.send_success_json()
         return self.send_error_json({'message': 'update failed'})
 
@@ -103,7 +136,7 @@ class AdditiveSearchHandler(BaseHandler):
         
         return self.render('partial/additive.html',
                            additive = additive,
-                           additive_detail = models.Additive_Detail().find(additive_id),
+                           additive_detail = models.Additive_Detail().find_by_additive_id(additive_id),
                            )
 
 class AdditiveUploadHandler(BaseHandler):

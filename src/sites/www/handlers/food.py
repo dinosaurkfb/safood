@@ -24,7 +24,7 @@ class FoodHandler(BaseHandler):
 
         self._incr_view_counts(food)
         
-        food_parts = models.Food_Part().get(food_id)
+        food_parts = models.Food_Part().findall_by_food_id(food_id)
         i_dict = {}
         for part in food_parts:
             ingredients = models.Ingredient().get_additive(part.id)

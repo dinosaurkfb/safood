@@ -8,7 +8,9 @@
 <div id="additive-extra">
   <div class="bar noneselectable">
     <i class="icon-slideup"></i>
-    <h4>添加剂详情:{{additive.name}}</h4>
+    <h4>添加剂详情:{{additive.name}}
+      <a id = "addi-update-btn" class="btn primary-btn mini-btn" href="/additive/{{additive.id}}/update" data-title="修改" data-url="/additive/{{additive.id}}/update">修改</a>
+    </h4>
   </div>
 
   <table border="1", id="additive-detail-tab">
@@ -37,27 +39,27 @@
     </tr>
     <tr>
       <td>ADI</td>
-      <td>{{additive_detail['adi'] if additive_detail and additive_detail['adi'] else u"未知" }}</td>
+      <td>{{additive_detail.adi if additive_detail and additive_detail.adi else u"未知" }}</td>
     </tr>
     <tr>
       <td>LD50</td>
-      <td>{{additive_detail['ld50'] if additive_detail and additive_detail['ld50'] else u"未知"}}</td>
+      <td>{{additive_detail.ld50 if additive_detail and additive_detail.ld50 else u"未知"}}</td>
     </tr>
     <tr>
       <td>应用范围</td>
-      <td>{{additive_detail['apply_range'] if additive_detail and additive_detail['apply_range'] else u"未知" }}</td>
+      <td>{{additive_detail.apply_range if additive_detail and additive_detail.apply_range else u"未知" }}</td>
     </tr>
     <tr>
       <td>安全情况</td>
-      <td>{{additive_detail['safe_status'] if additive_detail and additive_detail['safe_status'] else u"未知" }}</td>
+      <td>{{additive_detail.safe_status if additive_detail and additive_detail.safe_status else u"未知" }}</td>
     </tr>
     <tr>
       <td>制法</td>
-      <td>{{additive_detail['preparation'] if additive_detail and additive_detail['preparation'] else u"未知" }}</td>
+      <td>{{additive_detail.preparation if additive_detail and additive_detail.preparation else u"未知" }}</td>
     </tr>
     <tr>
       <td>简洁制法</td>
-      <td>{{additive_detail['preparation_short'] if additive_detail and additive_detail['preparation_short'] else u"未知" }}</td>
+      <td>{{additive_detail.preparation_short if additive_detail and additive_detail.preparation_short else u"未知" }}</td>
     </tr>
 
   </table>
