@@ -10,24 +10,28 @@
     <h4>食物详情:{{food.name}}</h4>
   </div>
 
-<table border="1">
-  <tr>
-    <th>组成部分</th>
-    <th>所含添加剂</th>
-  </tr>
+  <table border="1", id="food-part-tab">
+    <tr>
+      <th>组成部分</th>
+      <th>所含添加剂</th>
+    </tr>
 
-  {% for part in i_dict %}
-  <tr>
-    <td>{{ part }}</td>
-    <td>
-      {% for i in i_dict[part] %}
-      <a href='/additive/{{i[0]}}'>
-	{{ i[1] }}
-      </a>
-      {% end %}
-    </td}>
-  </tr>
-  {% end %}
-</table>
+    {% for part in i_dict %}
+    <tr>
+      <td>{{ part }}</td>
+      <td>
+	{% for i in i_dict[part] %}
+	<a href='/additive/{{i[0]}}'>
+	  {{ i[1] }}
+	</a>
+	{% end %}
+       </td}>
+    </tr>
+    {% end %}
+  </table>
 </div>
+{% end %}
+
+{% block sidebar %}
+{% include 'sidebar_global.html' %}
 {% end %}

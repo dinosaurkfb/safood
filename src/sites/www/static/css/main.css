@@ -1060,9 +1060,9 @@ a.fancybox-next {
   z-index: 1;
 }
 #additive-extra {
-  width: 285px;
-  float: right;
-  padding: 15px;
+  /* width: 285px; */ /* 固定宽度 */
+  /* float: right; */
+  padding: 0px; /* 内边距 */
   overflow-y: auto;
   overflow-x: hidden;
 }
@@ -1133,6 +1133,7 @@ a.fancybox-next {
   padding: 3px 0;
   margin: 0;
 }
+
 #additive-extra .bar {
   overflow: hidden;
   cursor: pointer;
@@ -1222,6 +1223,99 @@ a.fancybox-next {
   font-size: 12px;
   float: none;
 }
+
+#additive-detail-tab {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  width:100%;
+  border-collapse:collapse;
+}
+
+#additive-detail-tab td, #additive-detail-tab th {
+  font-size:1em;
+  /* border:1px solid #98bf21; */
+  border:1px solid #8FC1FF;
+  padding:3px 7px 2px 7px;
+}
+
+#additive-detail-tab th {
+  font-size:1.1em;
+  text-align:left;
+  padding-top:5px;
+  padding-bottom:4px;
+  /* color: #5F778B; */
+  /* background-color:#A7C942; */
+  background-color:#9FC1FF;
+  color:#ffffff;
+}
+
+#additive-detail-tab th:first-child {
+    width:13%;
+}
+
+#additive-detail-tab td:first-child {
+  font-style: italic;
+  font-weight: 500;
+}
+
+#food-extra {
+  /* width: 285px; */ /* 固定宽度 */
+  /* float: right; */
+  padding: 0px; /* 内边距 */
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#food-extra .bar {
+  overflow: hidden;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  border-top: 1px solid #ddd;
+  background: #eee;
+  margin: 5px -15px;
+  padding: 0 15px;
+}
+#food-extra .bar .icon-slideup,
+#food-extra .bar .icon-slidedown {
+  float: right;
+  margin-top: 8px;
+  cursor: pointer;
+}
+#food-extra .bar h4 {
+  padding: 0;
+  margin: 2px 0;
+}
+#food-part-tab {
+  font-family:"Trebuchet MS", Arial, Helvetica, sans-serif;
+  width:100%;
+  border-collapse:collapse;
+}
+
+#food-part-tab td, #food-part-tab th {
+  font-size:1em;
+  /* border:1px solid #98bf21; */
+  border:1px solid #8FC1FF;
+  padding:3px 7px 2px 7px;
+}
+
+#food-part-tab th {
+  font-size:1.1em;
+  text-align:left;
+  padding-top:5px;
+  padding-bottom:4px;
+  /* color: #5F778B; */
+  /* background-color:#A7C942; */
+  background-color:#9FC1FF;
+  color:#ffffff;
+}
+
+#food-part-tab th:first-child {
+    width:13%;
+}
+
+#food-part-tab td:first-child {
+  font-style: italic;
+  font-weight: 500;
+}
+
 #comments {
   background: #edeff4;
   font-size: 12px;
