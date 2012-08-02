@@ -37,7 +37,7 @@
           ADI值(包括单位)
         </label>
         <div class="input-single">
-          <input type="TEXT" name="detail_adi" value="{{additive_detail.adi}}" />
+          <input type="TEXT" name="detail_adi" value="{{additive_detail.adi if additive_detail and additive_detail.adi else ''}}" />
         </div>
       </div>
       <div class="section">
@@ -45,14 +45,14 @@
           LD50值(包括单位)
         </label>
         <div class="input-single">
-          <input type="TEXT" name="detail_ld50" value="{{additive_detail.ld50}}" />
+          <input type="TEXT" name="detail_ld50" value="{{additive_detail.ld50 if additive_detail and additive_detail.ld50 else ''}}" />
         </div>
       </div>
       <div class="section">
         <label for="additive">应用范围</label>
         <div class="input-single">
           <textarea rows="8" name="detail_apply_range">
-	    {{additive_detail.apply_range}}
+	    {{additive_detail.apply_range if additive_detail and additive_detail.apply_range else ''}}
 	  </textarea>
         </div>
       </div>
@@ -60,7 +60,7 @@
         <label for="additive">安全情况</label>
         <div class="input-single">
           <textarea rows="5" name="detail_safe_status">
-	    {{additive_detail.safe_status}}
+	    {{additive_detail.safe_status if additive_detail and additive_detail.safe_status else ''}}
 	  </textarea>
         </div>
       </div>
@@ -70,7 +70,7 @@
         </label>
         <div class="input-single">
           <textarea rows="5" name="detail_using_status">
-	    {{additive_detail.using_status}}
+	    {{additive_detail.using_status if additive_detail and additive_detail.using_status else ''}}
 	  </textarea>
         </div>
       </div>
@@ -78,7 +78,7 @@
         <label for="additive">潜在危害</label>
         <div class="input-single">
           <textarea rows="5" name="detail_safe_risk">
-	    {{additive_detail.safe_risk}}
+	    {{additive_detail.safe_risk if additive_detail and additive_detail.safe_risk else ''}}
 	  </textarea>
         </div>
       </div>
@@ -87,7 +87,7 @@
           安全性排名
         </label>
         <div class="input-single">
-          <input type="TEXT" name="detail_safe_rank" value="{{additive_detail.safe_rank}}"/>
+          <input type="TEXT" name="detail_safe_rank" value="{{additive_detail.safe_rank if additive_detail and additive_detail.safe_rank else ''}}"/>
         </div>
       </div>
 
@@ -95,7 +95,7 @@
         <label for="additive">制法</label>
         <div class="input-single">
           <textarea rows="8" name="detail_preparation">
-	    {{additive_detail.preparation}}
+	    {{additive_detail.preparation if additive_detail and additive_detail.preparation else ''}}
 	  </textarea>
         </div>
       </div>
@@ -104,7 +104,7 @@
           简洁制法
         </label>
         <div class="input-single">
-          <input type="TEXT" name="detail_preparation_short" value="{{additive_detail.preparation_short}}"/>
+          <input type="TEXT" name="detail_preparation_short" value="{{additive_detail.preparation_short if additive_detail and additive_detail.preparation_short else ''}}"/>
         </div>
       </div>
       <div class="section">
@@ -114,6 +114,4 @@
   </div>
 </div>
 
-<!--
-<script type="text/javascript"> $('#additive-upload').ajaxSubmit() </script>
--->
+<script type="text/javascript"> $('#additive-update').ajaxSubmit() </script>

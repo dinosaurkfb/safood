@@ -2,14 +2,10 @@
 
 {% block main %}
 {% set creator = additive.creator %}
-<div id="additive">
-  {# 如果不是单张照片，则显示左右箭头 #}
-</div>
 <div id="additive-extra">
   <div class="bar noneselectable">
     <i class="icon-slideup"></i>
     <h4>添加剂详情:{{additive.name}}
-      <a id = "addi-update-btn" class="btn primary-btn mini-btn" href="/additive/{{additive.id}}/update" data-title="修改" data-url="/additive/{{additive.id}}/update">修改</a>
     </h4>
   </div>
 
@@ -67,5 +63,13 @@
 {% end %}
 
 {% block sidebar %}
+<div class="upload item" data-url="/additive/{{additive.id}}/update" data-title="修改添加剂" >
+    <div class="left"></div>
+    
+    <div class="center">
+      修改添加剂
+    </div>
+    <div class="right"></div>
+</div>
 {% include 'sidebar_global.html' %}
 {% end %}

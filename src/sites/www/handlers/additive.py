@@ -64,12 +64,13 @@ class AdditiveHandler(BaseHandler):
 
 class AdditiveUpdateHandler(BaseHandler):
     def get(self, additive_id):
+        template_prefix = 'partial/' if self.is_ajax_request else ''
         self.additive = models.Additive().find(additive_id)
         if not self.additive or self.additive.status != 0:
             return self.render('error/additive_not_exists.html')
 
         self.additive_detail = models.Additive_Detail().find_by_additive_id(self.additive.id)
-        return self.render('additive_update.html',
+        return self.render('{0}additive_update.html'.format(template_prefix),
                            additive = self.additive,
                            additive_detail = self.additive_detail,
                            )
@@ -114,7 +115,7 @@ class AdditiveUpdateHandler(BaseHandler):
                     preparation_short = self.get_argument('detail_preparation_short', ''),
                     ).save()
                 
-            return self.send_success_json()
+            return self.send_success_json(location='/additive/{0}'.format(additive_id))
         return self.send_error_json({'message': 'update failed'})
 
 class AdditiveSearchHandler(BaseHandler):
