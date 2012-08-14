@@ -3,7 +3,7 @@ from collections import OrderedDict
 
 USERS_PER_PAGE = 20
 
-ADDITIVES_PER_PAGE = 10
+ADDITIVES_PER_PAGE = 15
 
 FOODS_PER_PAGE = 15
 

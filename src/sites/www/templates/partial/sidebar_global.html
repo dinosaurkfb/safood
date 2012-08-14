@@ -7,6 +7,10 @@
 
 {% end %}
 
+{% if page_type != 'foods' %}
 {% include 'sidebar_food_nav.html' %}
+{% end %}
+{% if page_type != 'additives' %}
 {% include 'sidebar_additive_nav.html' %}
+{% end %}
 {% include 'sidebar_hot_searchs.html' %}

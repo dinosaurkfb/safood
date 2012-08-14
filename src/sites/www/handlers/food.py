@@ -103,7 +103,56 @@ class FoodSearchHandler(BaseHandler):
 class FoodUploadHandler(BaseHandler):
     def get(self):
         template_prefix = 'partial/' if self.is_ajax_request else ''
-        return self.render('{0}upload.html'.format(template_prefix))
+        return self.render('{0}food_upload.html'.format(template_prefix))
+
+class FoodEditHandler(BaseHandler):
+    def get(self, food_id):
+        template_prefix = 'partial/' if self.is_ajax_request else ''
+        food = models.Food().find(food_id)
+        if not food or food.status != 0:
+            return self.render('error/food_not_exists.html')
+
+        q = self.get_argument('q', '')
+        if not q:
+            food_parts = models.Food_Part().findall_by_food_id(food_id)
+            i_dict = {}
+            for part in food_parts:
+                ingredients = models.Ingredient().get_additive(part.id)
+                i_dict[part.name] = ingredients
+        
+            return self.render('partial/food_edit.html',
+                               food = food,
+                               i_dict = i_dict
+                               )
+        food_parts = models.Food_Part().findall_by_food_id(food_id)
+        rows = []
+        for part in food_parts:
+            ingredients = models.Ingredient().get_additive(part.id)
+            i_list = [i[1] for i in ingredients]
+            rows.append({"id": part.id, "name": part.name, "addis":i_list})
+        
+        result = {
+            "total":"1",
+            "page":"1",
+            "records":"2",
+            "rows":rows,
+            }
+        return self.write(result)
+
+    def post(self, food_id):
+        template_prefix = 'partial/' if self.is_ajax_request else ''
+        
+        part_id = self.get_argument('id', '')
+        part_name = self.get_argument('name', '')
+        addis = self.get_argument('addis', '')
+        print(u'part_id={0}, part_name={1}, addis={2}, food_id = {3}'.format(part_id, part_name, addis, food_id))
+
+        addi_list = addis.split(',')
+        for a in addi_list:
+            if not models.Additive().findall_by_name(a):
+                return self.send_error_json(u"数据库中不存在此添加剂:{0}".format(a))
+                
+        return self.send_success_json()
 
 class HotFoodsHandler(BaseFoodsHandler):
     def get(self):

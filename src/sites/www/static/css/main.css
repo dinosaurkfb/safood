@@ -540,6 +540,41 @@ body {
   float: right;
   margin-top: 2px;
 }
+
+/* #header .inner .search {  */
+/* width: 260px;  */
+/* padding: 0 10px;  */
+/* height: 42px;  */
+/* //background: #8CDAF8;  */
+/* } */
+/* #header .inner .search .search_form {  */
+/* margin:7px 0;  */
+/* display: inline;  */
+/* height:29px;  */
+/* } */
+/* #header .inner .search .search_btn { */
+/*     margin: 8px 0 0 0; */
+/*     background: #777; */
+/*     width:30px; */
+/*     height:26px; */
+/*     font: normal 14px/14px 'Trebuchet MS', sans-serif; */
+/*     color:#FFF; */
+/*     border: 0; */
+/* } */
+/* #header .inner .search .search_box { */
+/*     font: italic normal 15px/15px Georgia, serif; */
+/*     color: #555; */
+/*     border: none !important; */
+/*     height: 20px; */
+/*     width: 226px; */
+/*     padding: 0 0 3px; */
+/*     background-color: transparent !important; */
+/* } */
+#header .inner #witticism button{
+    vertical-align:middle;
+    height: auto;
+}
+
 #header .inner .nav-right {
   list-style: none;
   margin: 0;
@@ -664,6 +699,14 @@ body {
   font-size: 10px;
   float: right;
   color: #ccc;
+}
+
+#searcher form .search_box {
+  float: left;
+}
+
+#searcher {
+  width: 750px;
 }
 
 #main {
@@ -1085,6 +1128,12 @@ a.fancybox-next {
 #additive-extra #additive-content-edit textarea {
   width: 270px;
 }
+
+/* #header .inner #witticism #search_form #search_box { */
+/*   width: 100px; */
+/* } */
+
+
 #additive-extra .icon-edit {
   margin-left: 5px;
   cursor: pointer;

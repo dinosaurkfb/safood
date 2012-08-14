@@ -50,6 +50,18 @@
       <td>{{additive_detail.safe_status if additive_detail and additive_detail.safe_status else u"未知" }}</td>
     </tr>
     <tr>
+      <td>使用情况</td>
+      <td>{{additive_detail.using_status if additive_detail and additive_detail.using_status else u"未知" }}</td>
+    </tr>
+    <tr>
+      <td>潜在危害</td>
+      <td>{{additive_detail.safe_risk if additive_detail and additive_detail.safe_risk else u"未知" }}</td>
+    </tr>
+    <tr>
+      <td>安全性排名</td>
+      <td>{{additive_detail.safe_rank if additive_detail and additive_detail.safe_rank else u"未知" }}</td>
+    </tr>
+    <tr>
       <td>制法</td>
       <td>{{additive_detail.preparation if additive_detail and additive_detail.preparation else u"未知" }}</td>
     </tr>

@@ -1,0 +1,93 @@
+<div class="box">
+  <div class="header">录入食品</div>
+  <div class="body">
+    <table id="addtree"></table>
+    <div id="paddtree"></div>
+    <!-- <table border="1", id="food-part-tab"> -->
+    <!--   <tr> -->
+    <!-- 	<th>组成部分</th> -->
+    <!-- 	<th>所含添加剂</th> -->
+    <!--   </tr> -->
+    <!-- </table> -->
+    <!-- <form id="food-upload" method="POST" action="/food" class="flat"> -->
+    <!--   <div class="section"> -->
+    <!--     <label for="food">食品名称 (必填)</label> -->
+    <!--     <div class="input-single"> -->
+    <!--       <input type="TEXT" name="name" value="" /> -->
+    <!--       <input type="button" value="下一步" class="btn mini-btn" /> -->
+    <!--     </div> -->
+    <!--   </div> -->
+
+    <!--   <div class="section"> -->
+    <!--   </div> -->
+    <!--   <div class="section"> -->
+    <!--     <input type="SUBMIT" value="完成" class="btn primary-btn" /> -->
+    <!--   </div> -->
+    <!-- </form> -->
+  </div>
+</div>
+
+<script type="text/javascript"> $('#food-upload').ajaxSubmit() </script>
+<script type="text/javascript"> 
+  function myelem (value, options) {
+  var el = document.createElement("tr");
+  var td_el = document.createElement("td");
+  var td_text = document.createTextNode("test");
+  td_el.appendChild(td_text);
+  el.appendChild(td_el);
+  //alert("myelem: "+value);
+  return el;
+  }
+ 
+  function myvalue(elem, operation, value) {
+  //alert("myvalue: "+value);
+  if(operation === 'get') {
+  return $(elem).val();
+  } else if(operation === 'set') {
+  $(elem).val(value);
+  }
+  }
+
+  jQuery("#addtree").jqGrid({
+  url: 'edit?q=tree',
+  datatype: "json",
+  treedatatype: "json",
+  mtype: "GET",
+  colNames:["id","组成部分", "包含添加剂"],
+  colModel:[
+  {name:'id',index:'id', width:1,hidden:true,key:true, editable:true},
+  {name:'name',index:'name', width:100, editable:true},
+  {name:'addis',index:'addis', width:350, align:"center",editable:true},
+  ],
+
+  jsonReader: {
+  repeatitems: false,
+  },
+  height:'auto',
+  width:600,
+  pager : "#paddtree",
+  ExpandColumn : 'name',
+  editurl:'edit?q=submit',
+  caption: "录入食品",
+
+  });
+
+  function fn_editSubmit(response,postdata)
+  {
+  var json=response.responseText; //in my case response text form server is "{status:ok, content:''}"
+  var result=eval("("+json+")"); //create js object from server reponse
+  if (result.status == 'ok') {
+  return [true, "", 2];
+  }
+  else {
+  return [false, result.content, 2];
+  }
+  };
+
+  var editOptions={
+  closeOnEscape: true,
+  closeAfterEdit: true,
+  afterSubmit: fn_editSubmit};
+  jQuery("#addtree").jqGrid('navGrid',"#paddtree", {}, editOptions);
+
+</script>

@@ -143,7 +143,7 @@ class AdditiveSearchHandler(BaseHandler):
 class AdditiveUploadHandler(BaseHandler):
     def get(self):
         template_prefix = 'partial/' if self.is_ajax_request else ''
-        return self.render('{0}upload.html'.format(template_prefix))
+        return self.render('{0}additive_upload.html'.format(template_prefix))
 
 class HotAdditivesHandler(BaseAdditivesHandler):
     def get(self):

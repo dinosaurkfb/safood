@@ -6,6 +6,7 @@ handlers = [
     (r"/login", LoginHandler),
     (r"/logout", LogoutHandler),
     (r"/about", AboutHandler),
+    (r"/example", ExampleHandler),
 
 #    (r"/local", LocalHandler),
 #    (r"/remote/jsonp/flightResult", JsonpHandler),
@@ -22,6 +23,9 @@ handlers = [
     (r"/additives/hot", HotAdditivesHandler),
     (r"/additives/latest", LatestAdditivesHandler),
 
+    (r"/food/upload", FoodUploadHandler),
+    (r"/food/edit", FoodEditHandler),
+    (r"/food/edit/([0-9]+)", FoodEditHandler),
     (r"/food", FoodHandler),
     (r"/food/([0-9]+)", FoodHandler),
     (r"/food/search", FoodSearchHandler),
@@ -51,5 +55,5 @@ handlers = [
     (r"/settings/link", SettingsLinkHandler),
     (r"/settings/avatar", SettingsAvatarHandler),
     (r"/settings/password", SettingsPasswordHandler),
-    (r"^/(.*)$", BaseHandler),
+#    (r"^/(.*)$", BaseHandler),
 ]

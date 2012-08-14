@@ -1,3 +1,24 @@
+{% if page_type == 'foods' %}
+<div class="upload item" data-url="/food/upload" data-title="上传食品" >
+    <div class="left"></div>
+    
+    <div class="center">
+        上传食品
+    </div>
+    <div class="right"></div>
+</div>
+{% end %}
+{% if page_type == 'food' %}
+<div class="upload item" data-url="/food/edit/{{food.id}}" data-title="编辑食品" >
+    <div class="left"></div>
+    
+    <div class="center">
+        编辑食品
+    </div>
+    <div class="right"></div>
+</div>
+{% end %}
+{% if page_type == 'additives' %}
 <div class="upload item" data-url="/additive/upload" data-title="上传添加剂" >
     <div class="left"></div>
     
@@ -6,3 +27,4 @@
     </div>
     <div class="right"></div>
 </div>
+{% end %}
