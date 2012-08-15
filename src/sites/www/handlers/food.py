@@ -147,10 +147,39 @@ class FoodEditHandler(BaseHandler):
         addis = self.get_argument('addis', '')
         print(u'part_id={0}, part_name={1}, addis={2}, food_id = {3}'.format(part_id, part_name, addis, food_id))
 
+        #the part_id column in table "ingredient" is a foreign key 
+        #referenced from table "food_part" and ON_DELETE is set as 
+        #CASCADE
+        if "del" == self.get_argument('oper', ''):
+            part_to_del = models.Food_Part().find(part_id)
+            part_to_del.delete()
+            return self.send_success_json()
+            
         addi_list = addis.split(',')
+        addis_to_save = []
         for a in addi_list:
-            if not models.Additive().findall_by_name(a):
+            db_addis = models.Additive().find_by_name(a)
+            if not db_addis:
                 return self.send_error_json(u"数据库中不存在此添加剂:{0}".format(a))
+            addis_to_save.append(db_addis)
+        #empty part_id means this is an add operation
+        if not part_id:
+            p = models.Food_Part()
+            p.food_id = food_id
+            p.name = part_name
+            part_id = p.save()
+        #add ingredients in ingredient table
+        #get the current ingredients for this part
+        part_ingredients = models.Ingredient().findall_by_part_id(part_id)
+        cur_addi_ids = [i.additive_id for i in part_ingredients]
+        for a in addis_to_save:
+        #if the additive is already in this part, skip it
+        #else save it 
+            if a.id not in cur_addi_ids:
+                a_to_save = models.Ingredient()
+                a_to_save.part_id = part_id
+                a_to_save.additive_id = a.id
+                a_to_save.save()
                 
         return self.send_success_json()
 
