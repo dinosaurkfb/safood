@@ -6,7 +6,7 @@ handlers = [
     (r"/login", LoginHandler),
     (r"/logout", LogoutHandler),
     (r"/about", AboutHandler),
-    (r"/example", ExampleHandler),
+    (r"/search", SearchHandler),
 
 #    (r"/local", LocalHandler),
 #    (r"/remote/jsonp/flightResult", JsonpHandler),

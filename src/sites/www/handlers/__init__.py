@@ -7,3 +7,4 @@ from handlers.food import *
 
 from handlers.additive_api import *
 from handlers.food_api import *
+from handlers.search import *
