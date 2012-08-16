@@ -116,9 +116,8 @@ form .section {
 form .section.action {
   margin-bottom: 0;
 }
-form.flat {
-  margin: -10px;
-}
+/* form.flat { */
+/* } */
 form.flat input[type="file"] {
   width: 260px;
 }
@@ -701,12 +700,24 @@ body {
   color: #ccc;
 }
 
-#searcher form .search_box {
+#searcher form .section {
   float: left;
 }
 
+#searcher form .section .search_box {
+    width: 670px;
+    float: left;
+    padding: 5px 10px;
+}
+
+#searcher form .section .btn {
+    margin-left: 7px;
+    padding-bottom: 2px;
+    float: right;
+}
+
 #searcher {
-  width: 750px;
+  width: 80%;
 }
 
 #main {
@@ -1129,10 +1140,10 @@ a.fancybox-next {
   width: 270px;
 }
 
-/* #header .inner #witticism #search_form #search_box { */
+/* #header .inner #search_form #search_box { */
 /*   width: 100px; */
+/*   float: left; */
 /* } */
-
 
 #additive-extra .icon-edit {
   margin-left: 5px;
