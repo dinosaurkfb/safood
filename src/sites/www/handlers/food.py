@@ -18,6 +18,7 @@ class FoodHandler(BaseHandler):
             self.set_cookie('viewed_food_ids', ','.join(map(str, viewed_food_ids)))
 
     def get(self, food_id):
+        template_prefix = 'partial/' if self.is_ajax_request else ''
         food = models.Food().find(food_id)
         if not food or food.status != 0:
             return self.render('error/food_not_exists.html')
@@ -30,7 +31,7 @@ class FoodHandler(BaseHandler):
             ingredients = models.Ingredient().get_additive(part.id)
             i_dict[part.name] = ingredients
         
-        return self.render('partial/food.html',
+        return self.render('{0}food.html'.format(template_prefix),
                            food = food,
                            i_dict = i_dict
                            )
@@ -45,23 +46,23 @@ class FoodHandler(BaseHandler):
 
         if food_id:
             food.save()
+            return self.redirect(u'/food/edit/{0}'.format(food_id))
+            # if self.get_argument('part', ''):
+            #     for item in ('part'):
+            #         value = self.get_argument('detail_{0}'.format(item), '')
+            #         models.Food_Part(
+            #                 food_id = food_id,
+            #                 key = item,
+            #                 value = value).save()
+            # else:
+            #     part = get_food_part(food.hash, self.current_user.id)
+            #     for key, value in part.items():
+            #         models.Food_Part(
+            #                 food_id = food_id,
+            #                 key = key,
+            #                 value = value).save()
 
-            if self.get_argument('part', ''):
-                for item in ('part'):
-                    value = self.get_argument('detail_{0}'.format(item), '')
-                    models.Food_Part(
-                            food_id = food_id,
-                            key = item,
-                            value = value).save()
-            else:
-                part = get_food_part(food.hash, self.current_user.id)
-                for key, value in part.items():
-                    models.Food_Part(
-                            food_id = food_id,
-                            key = key,
-                            value = value).save()
-
-            self.send_success_json(location='/food/{0}/via/mine'.format(food_id))
+            # self.send_success_json(location='/food/{0}/via/mine'.format(food_id))
         else:
             self.send_error_json(food.errors)
 
@@ -120,7 +121,7 @@ class FoodEditHandler(BaseHandler):
                 ingredients = models.Ingredient().get_additive(part.id)
                 i_dict[part.name] = ingredients
         
-            return self.render('partial/food_edit.html',
+            return self.render('{0}food_edit.html'.format(template_prefix),
                                food = food,
                                i_dict = i_dict
                                )
@@ -140,7 +141,7 @@ class FoodEditHandler(BaseHandler):
         return self.write(result)
 
     def post(self, food_id):
-        template_prefix = 'partial/' if self.is_ajax_request else ''
+        #template_prefix = 'partial/' if self.is_ajax_request else ''
         
         part_id = self.get_argument('id', '')
         part_name = self.get_argument('name', '')

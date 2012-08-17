@@ -48,9 +48,11 @@ class SearchHandler(BaseHandler):
     def post(self):
         search_key = self.get_argument('q', '')
         if self.is_ajax_request:
-            return self.send_success_json(location=u'/search_result?q={0}'.format(search_key))
+            return self.send_success_json(location=u'/search_result?q={0}'.format(tornado.escape.url_escape(search_key)))
         else:
-            return self.redirect(u'/search_result?q={0}'.format(search_key))
+            print u'/search_result?q={0}'.format(search_key)
+            print u'/search_result?q={0}'.format(tornado.escape.url_escape(search_key))
+            return self.redirect(u'/search_result?q={0}'.format(tornado.escape.url_escape(search_key)))
 
 # class SearchResultHandler(BaseHandler):
 #     def get(self):

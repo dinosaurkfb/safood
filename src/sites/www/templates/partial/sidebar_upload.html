@@ -28,3 +28,14 @@
     <div class="right"></div>
 </div>
 {% end %}
+
+{% if page_type == 'additive' %}
+<div class="upload item" data-url="/additive/{{additive.id}}/update" data-title="修改添加剂" >
+    <div class="left"></div>
+    
+    <div class="center">
+      修改添加剂
+    </div>
+    <div class="right"></div>
+</div>
+{% end %}

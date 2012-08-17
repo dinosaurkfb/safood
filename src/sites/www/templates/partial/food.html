@@ -1,5 +1,3 @@
-{% extends '../base.html' %}
-{% block main %}
 {% set creator = food.creator %}
 <div id="food">
   {#  #}
@@ -30,9 +28,3 @@
     {% end %}
   </table>
 </div>
-{% end %}
-
-{% block sidebar %}
-{% set page_type = 'food' %}
-{% include 'sidebar_global.html' %}
-{% end %}

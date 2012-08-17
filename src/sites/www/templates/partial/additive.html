@@ -75,13 +75,6 @@
 {% end %}
 
 {% block sidebar %}
-<div class="upload item" data-url="/additive/{{additive.id}}/update" data-title="修改添加剂" >
-    <div class="left"></div>
-    
-    <div class="center">
-      修改添加剂
-    </div>
-    <div class="right"></div>
-</div>
+{% set page_type = 'additive' %}
 {% include 'sidebar_global.html' %}
 {% end %}
