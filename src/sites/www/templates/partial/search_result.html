@@ -1,0 +1,36 @@
+<div class="box" id="foods">
+  <div class="header">搜索结果</div>
+  <div class="search-result-body">
+    <ul class="search-result">
+      {% if foods %}
+      <li class="result-group">
+	<div class="rtitle">与"{{key}}"相关的食品:</div>
+	<ul class="foods-result">
+	  {% for index, food in enumerate(foods) %}
+	  <li class="food-item">
+	    <a href="/food/{{food['id']}}">{{food['name']}}</a> 
+	  </li>
+	  {% end %}
+	</ul>
+      </li>
+      {% end %}
+
+      {% if additives %}
+      <li class="result-group">
+	<div class="rtitle">与"{{key}}"相关的添加剂:</div>
+	<ul class="additives-result">
+	  {% for index, additive in enumerate(additives) %}
+	  <li class="additive-item">
+	    <a href="/additive/{{additive['id']}}">{{additive['name']}}</a> 
+	  </li>
+	  {% end %}
+	</ul>
+      </li>
+      {% end %}
+      {% if not additives and not foods %}
+      <div class="result-group">没有找到与"{{key}}"相关的食品或添加剂</div>
+      {% end %}
+    </ul>
+    {% set page_type = 'foods' %}
+  </div>
+</div>

@@ -725,6 +725,31 @@ body {
   margin: 8px 20px 20px 0;
   float: left;
 }
+
+.search-result-body .result-left {
+  float: left;
+  display: inline-block;
+}
+
+.search-result-body .search-result .result-group {
+  float: left;
+  width: 100%;
+  display: inline-block;
+  margin: auto 10px;
+  list-style: none;
+}
+
+.search-result-body .search-result .food-item {
+    width: auto;
+    list-style: none;
+}
+
+.search-result-body .search-result .additive-item {
+    width: auto;
+    border: 0px none #ccc;
+    list-style: none;
+}
+
 #register,
 #login {
   width: 550px;
@@ -841,9 +866,13 @@ body {
   margin-bottom: 10px;
 }
 
+#sidebar #panel-login #login_btn {
+    width: 40%;
+}
+
 #sidebar #panel-login #register_btn {
     float: right;
-    width: 50%;
+    width: 40%;
     text-align: center;
 }
 

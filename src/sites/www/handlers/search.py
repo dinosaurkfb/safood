@@ -14,7 +14,21 @@ class SearchHandler(BaseHandler):
     def fill_additive_label(self, additive):
         return u'{{"label":"{0}", "category":"搜添加剂>>"}}'.format(additive['name'])
     def get(self):
+        template_prefix = 'partial/' if self.is_ajax_request else ''
+        search_key = self.get_argument('q', '')
+        if search_key:
+            food_matched = models.Food().search(u'%{0}%'.format(search_key))
+            additives_matched = models.Additive().search(u'%{0}%'.format(search_key))
+            return self.render(
+                '{0}search_result.html'.format(template_prefix),
+                key = search_key,
+                foods = food_matched.to_dict_list(),
+                additives = additives_matched.to_dict_list()
+                )
+
         search_key = self.get_argument('term', '')
+        if not search_key:
+            return self.redirect(self.request.headers['Referer'])
         result = u'['
         food_matched = models.Food().search(u'%{0}%'.format(search_key))
         for f in food_matched.to_dict_list():
@@ -28,8 +42,25 @@ class SearchHandler(BaseHandler):
             result = result[:-1] + u']'
         else:
             result = result + u']'
-        ret = [{"label":"annttop C13","category":"Products"}]
-        test = '[{"label":"测试23", "category":"Additive"},{"label":"测试2", "category":"Additive"},{"label":"测试2", "category":"Additive"},{"label":"测试2", "category":"Additive"}]'
         print result
         return self.write(result)
 
+    def post(self):
+        search_key = self.get_argument('q', '')
+        if self.is_ajax_request:
+            return self.send_success_json(location=u'/search_result?q={0}'.format(search_key))
+        else:
+            return self.redirect(u'/search_result?q={0}'.format(search_key))
+
+# class SearchResultHandler(BaseHandler):
+#     def get(self):
+#         template_prefix = 'partial/' if self.is_ajax_request else ''
+#         search_key = self.get_argument('q', '')
+#         food_matched = models.Food().search(u'%{0}%'.format(search_key))
+#         additives_matched = models.Additive().search(u'%{0}%'.format(search_key))
+#         return self.render(
+#             '{0}search_result.html'.format(template_prefix),
+#             key = search_key,
+#             foods = food_matched.to_dict_list(),
+#             additives = additives_matched.to_dict_list()
+#             )

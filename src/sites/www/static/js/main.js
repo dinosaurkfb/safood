@@ -441,7 +441,7 @@ $(function() {
 	if ($this.hasClass('disabled')) return false;
 	$this.data('origin_text', $this.val());
 	$this.addClass('disabled');
-	$this.val('working...');
+	$this.val('提交中');
 	return true;
     });
     if (History.enabled && !$.browser.msie && $('#main').html()) {
